@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <form class="flex flex-col p-10 pb-0 gap-2" method="get">
+    <label name="text">Your text to be converted to speech</label>
+    <textarea class="border border-gray-700 p-3" name="text">{{ text }}</textarea>
+    <button class="bg-black py-3 text-white" type="submit">Generate audio</button>
+  </form>
+  {% if audio_html %}
+    <div class="p-10 flex flex-col gap-2">
+      <p>Audio result:</p>
+      {{ audio_html | safe }}
+    </div>
+  {% endif %}
+{% endblock content %}
