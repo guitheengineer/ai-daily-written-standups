@@ -1,14 +1,152 @@
 {% extends "base.html" %}
 {% block content %}
-  <form class="flex flex-col p-10 pb-0 gap-2" method="get">
-    <label name="text">Your text to be converted to speech</label>
-    <textarea class="border border-gray-700 p-3" name="text">{{ text }}</textarea>
-    <button class="bg-black py-3 text-white" type="submit">Generate audio</button>
+  <form class="bg-white my-10 max-w-[600px] mx-auto flex flex-col gap-8 p-8 rounded">
+    <section>
+      <h2>Personal Information</h2>
+      <div class="flex flex-col gap-5">
+        <div>
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required/>
+          </div>
+        </div>
+        <div>
+          <label for="about-you">About You:</label>
+          <textarea id="about" name="about" rows="4" cols="50" required></textarea>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Job Experience</h2>
+      <div>
+        <div id="jobs">
+          <div class="flex flex-col gap-5">
+            <div>
+              <label for="job1-year">Year:</label>
+              <input type="text" id="job1-year" name="job1-year"/>
+            </div>
+            <div>
+              <label for="job1-title">Title:</label>
+              <input type="text" id="job1-title" name="job1-title"/>
+            </div>
+            <div>
+              <label for="job1-company">Company:</label>
+              <input type="text" id="job1-company" name="job1-company"/>
+            </div>
+            <div>
+              <label class=" block text-gray-700 font-bold mb-2" for="job1-description">Description:</label>
+              <textarea id="job1-description" name="job1-description" rows="4" cols="50"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="add-job" type="button">Add</button>
+    </section>
+    <section>
+      <h2>Education</h2>
+      <div id="education">
+        <div>
+          <div class="flex flex-col gap-5">
+            <div>
+              <label for="education1-year">Year:</label>
+              <input type="text" id="education1-year" name="education1-year"/>
+            </div>
+            <div>
+              <label for="education1-course">Course:</label>
+              <input type="text" id="education1-course" name="education1-course"/>
+            </div>
+            <div>
+              <label>Description:</label>
+              <textarea id="education1-description"
+                        name="education1-description"
+                        rows="4"
+                        cols="50"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="add-education" type="button">Add</button>
+    </section>
+    <section>
+      <h2>Skills</h2>
+      <div>
+        <div class="flex flex-col gap-5">
+          <div>
+            <label for="soft-skills">Soft Skills:</label>
+            <textarea id="soft-skills" name="soft-skills" rows="4" cols="50"></textarea>
+          </div>
+          <div >
+            <label for="hard-skills">Hard Skills:</label>
+            <textarea id="hard-skills" name="hard-skills" rows="4" cols="50"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit">
+      Generate Cover Letter
+    </button>
   </form>
-  {% if audio_html %}
-    <div class="p-10 flex flex-col gap-2">
-      <p>Audio result:</p>
-      {{ audio_html | safe }}
-    </div>
-  {% endif %}
+  <script>
+    const buttonAddJob = document.getElementById('add-job')
+    const divJobs = document.getElementById('jobs')
+    buttonAddJob.addEventListener('click', () => {
+      const newJobId = divJobs.childElementCount + 1;
+      const newJob = document.createElement('div')
+
+      newJob.innerHTML = `<div>
+        <div class="flex flex-col gap-5">
+          <div>
+            <label for="job${newJobId}-year">Year:</label>
+            <input type="text" id="job${newJobId}-year" name="job${newJobId}-year"/>
+          </div>
+          <div>
+            <label for="job${newJobId}-title">Title:</label>
+            <input type="text" id="job${newJobId}-title" name="job${newJobId}-title"/>
+          </div>
+          <div>
+            <label for="job${newJobId}-company">Company:</label>
+            <input type="text" id="job${newJobId}-company" name="job${newJobId}-company"/>
+          </div>
+          <div>
+            <label class=" block text-gray-700 font-bold mb-2" for="job${newJobId}-description">Description:</label>
+            <textarea id="job${newJobId}-description" name="job${newJobId}-description" rows="4" cols="50"></textarea>
+          </div>
+        </div>
+      </div>`
+      divJobs.appendChild(newJob)
+    })
+
+    const buttonAddEducation = document.getElementById('add-education')
+    const divEducation = document.getElementById('education')
+    buttonAddEducation.addEventListener('click', () => {
+      const newEducationId = buttonAddEducation.childElementCount + 1;
+      const newJob = document.createElement('div')
+
+      newJob.innerHTML = `<div class="flex flex-col gap-5">
+        <div>
+          <label for="education${newEducationId}-year">Year:</label>
+          <input type="text"
+                 id="education${newEducationId}-year"
+                 name="education${newEducationId}-year"/>
+        </div>
+        <div>
+          <label for="education${newEducationId}-course">Course:</label>
+          <input type="text"
+                 id="education${newEducationId}-course"
+                 name="education${newEducationId}-course"/>
+        </div>
+        <div>
+          <label>Description:</label>
+          <textarea id="education${newEducationId}-description"
+                    name="education${newEducationId}-description"
+                    rows="4"
+                    cols="50"></textarea>
+        </div>
+      </div>`
+      divEducation.appendChild(newJob)
+    })
+
+    
+</script>
 {% endblock content %}

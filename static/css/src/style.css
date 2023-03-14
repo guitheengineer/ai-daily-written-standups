@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+input, textarea {
+  @apply appearance-none border p-2 rounded w-full text-gray-700 leading-tight;
+}
+
+label {
+  @apply block text-gray-700 font-bold mb-2;
+}
+
+h2 {
+  @apply text-2xl font-bold mb-5;
+}
