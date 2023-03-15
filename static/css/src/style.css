@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 
-input, textarea {
-  @apply appearance-none border p-2 rounded w-full text-gray-700 leading-tight;
+input, textarea, select {
+  @apply appearance-none border p-2 rounded w-full text-gray-700 leading-tight bg-white;
 }
 
 label {

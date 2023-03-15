@@ -597,13 +597,15 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-input, textarea {
+input, textarea, select {
   width: 100%;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   border-radius: 0.25rem;
   border-width: 1px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   padding: 0.5rem;
   line-height: 1.25;
   --tw-text-opacity: 1;
