@@ -73,17 +73,72 @@
         <div class="flex flex-col gap-5">
           <div>
             <label for="softSkills">Soft Skills:</label>
-            <select id="softSkills" name="softSkills" multiple required>
-              <option value="">
-                React
-              </option>
-              <option>
-                Typescript
-              </option>
-              <option>
-                Vue
-              </option>
+            <select id="softSkills" name="softSkills" multiple size="20" required>
+              <optgroup label="Front-End">
+                <option value="HTML">
+                  HTML
+                </option>
+                <option value="CSS">
+                  CSS
+                </option>
+                <option value="JavaScript">
+                  JavaScript
+                </option>
+                <option value="React">
+                  React
+                </option>
+                <option value="Angular">
+                  Angular
+                </option>
+                <option value="Vue">
+                  Vue
+                </option>
+              </optgroup>
+              <optgroup label="Back-End">
+                <option value="Node.js">
+                  Node.js
+                </option>
+                <option value="Python">
+                  Python
+                </option>
+                <option value="Java">
+                  Java
+                </option>
+                <option value="C#">
+                  C#
+                </option>
+                <option value="Ruby">
+                  Ruby
+                </option>
+                <option value="PHP">
+                  PHP
+                </option>
+              </optgroup>
+              <optgroup label="Mobile Development">
+                <option value="Swift">
+                  Swift
+                </option>
+                <option value="Objective-C">
+                  Objective-C
+                </option>
+                <option value="Kotlin">
+                  Kotlin
+                </option>
+                <option value="Java (Android)">
+                  Java (Android)
+                </option>
+                <option value="React Native">
+                  React Native
+                </option>
+              </optgroup>
+              <optgroup label="Custom Soft Skills" id="customSoftSkills">
+              </optgroup>
             </select>
+            <label>
+              Add a custom soft skill:
+              <input id="customSoftSkill1" name="customSoftSkill1" type='text' />
+              <button id="add-soft-skill" type="button">Add soft skill</button>
+            </label>
           </div>
           <div>
             <label for="hardSkills">Hard Skills:</label>
@@ -234,6 +289,20 @@
       inputAddHardSkill.value = '';
       optGroupHardSkills.appendChild(newOption)
       count++;
+    })
+
+    const buttonAddSoftSkill = document.getElementById('add-soft-skill')
+
+    const optGroupSoftSkills = document.getElementById('customSoftSkills')
+    let countAddedSoftSkills = 1;
+    const inputAddSoftSkill = document.getElementById(`customSoftSkill${countAddedSoftSkills}`)
+    buttonAddSoftSkill.addEventListener('click', () => {
+      const newOption = document.createElement('option')
+      newOption.value = inputAddSoftSkill.value;
+      newOption.textContent = inputAddSoftSkill.value;
+      inputAddSoftSkill.value = '';
+      optGroupSoftSkills.appendChild(newOption)
+      countAddedSoftSkills++;
     })
     
 </script>
