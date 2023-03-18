@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-  <form class="bg-white my-10 max-w-[600px] mx-auto flex flex-col gap-8 p-8 rounded">
-    <section>
+  <form class="bg-white my-10 max-w-[600px] mx-auto flex flex-col gap-14 p-8 rounded">
+    <section class="border-b border-slate-300 pb-14">
       <h2>Personal Information</h2>
       <div class="flex flex-col gap-5">
         <div>
@@ -16,7 +16,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section class="border-b border-slate-300 pb-14">
       <h2>Job Experience</h2>
       <div>
         <div class="flex flex-col gap-5" id="jobs">
@@ -40,9 +40,9 @@
           </div>
         </div>
       </div>
-      <button id="add-job" type="button">Add</button>
+      <button class="mt-3" id="add-job" type="button">Add Job Experience</button>
     </section>
-    <section>
+    <section class="border-b border-slate-300 pb-14">
       <h2>Education</h2>
       <div class="flex flex-col gap-5" id="education">
         <div>
@@ -65,14 +65,14 @@
           </div>
         </div>
       </div>
-      <button id="add-education" type="button">Add</button>
+      <button class="mt-3" id="add-education" type="button">Add Education</button>
     </section>
-    <section>
-      <h2>Skills</h2>
+    <section class="border-b border-slate-300 pb-14">
+      <h2>Soft Skills</h2>
       <div>
         <div class="flex flex-col gap-5">
           <div>
-            <label for="softSkills">Soft Skills:</label>
+            <label class="sr-only" for="softSkills">Soft Skills:</label>
             <select id="softSkills" name="softSkills" multiple size="20" required>
               <optgroup label="Front-End">
                 <option value="HTML">
@@ -134,82 +134,85 @@
               <optgroup label="Custom Soft Skills" id="customSoftSkills">
               </optgroup>
             </select>
-            <label>
+            <label class="mt-3">
               Add a custom soft skill:
               <input id="customSoftSkill1" name="customSoftSkill1" type='text' />
-              <button id="add-soft-skill" type="button">Add soft skill</button>
-            </label>
-          </div>
-          <div>
-            <label for="hardSkills">Hard Skills:</label>
-            <select id="hardSkills" name="hardSkills" multiple size="20" required>
-              <optgroup label="Front-End">
-                <option value="HTML">
-                  HTML
-                </option>
-                <option value="CSS">
-                  CSS
-                </option>
-                <option value="JavaScript">
-                  JavaScript
-                </option>
-                <option value="React">
-                  React
-                </option>
-                <option value="Angular">
-                  Angular
-                </option>
-                <option value="Vue">
-                  Vue
-                </option>
-              </optgroup>
-              <optgroup label="Back-End">
-                <option value="Node.js">
-                  Node.js
-                </option>
-                <option value="Python">
-                  Python
-                </option>
-                <option value="Java">
-                  Java
-                </option>
-                <option value="C#">
-                  C#
-                </option>
-                <option value="Ruby">
-                  Ruby
-                </option>
-                <option value="PHP">
-                  PHP
-                </option>
-              </optgroup>
-              <optgroup label="Mobile Development">
-                <option value="Swift">
-                  Swift
-                </option>
-                <option value="Objective-C">
-                  Objective-C
-                </option>
-                <option value="Kotlin">
-                  Kotlin
-                </option>
-                <option value="Java (Android)">
-                  Java (Android)
-                </option>
-                <option value="React Native">
-                  React Native
-                </option>
-              </optgroup>
-              <optgroup label="Custom Hard Skills" id="customHardSkills">
-              </optgroup>
-            </select>
-            <label>
-              Add a custom hard skill:
-              <input id="customHardSkill1" name="customHardSkill1" type='text' />
-              <button id="add-hard-skill" type="button">Add hard skill</button>
+              <button class="mt-3"  id="add-soft-skill" type="button">Add soft skill</button>
             </label>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="border-b border-slate-300 pb-14">
+      <h2>Hard Skills</h2>
+      <div>
+        <label class="sr-only" for="hardSkills">Hard Skills:</label>
+        <select id="hardSkills" name="hardSkills" multiple size="20" required>
+          <optgroup label="Front-End">
+            <option value="HTML">
+              HTML
+            </option>
+            <option value="CSS">
+              CSS
+            </option>
+            <option value="JavaScript">
+              JavaScript
+            </option>
+            <option value="React">
+              React
+            </option>
+            <option value="Angular">
+              Angular
+            </option>
+            <option value="Vue">
+              Vue
+            </option>
+          </optgroup>
+          <optgroup label="Back-End">
+            <option value="Node.js">
+              Node.js
+            </option>
+            <option value="Python">
+              Python
+            </option>
+            <option value="Java">
+              Java
+            </option>
+            <option value="C#">
+              C#
+            </option>
+            <option value="Ruby">
+              Ruby
+            </option>
+            <option value="PHP">
+              PHP
+            </option>
+          </optgroup>
+          <optgroup label="Mobile Development">
+            <option value="Swift">
+              Swift
+            </option>
+            <option value="Objective-C">
+              Objective-C
+            </option>
+            <option value="Kotlin">
+              Kotlin
+            </option>
+            <option value="Java (Android)">
+              Java (Android)
+            </option>
+            <option value="React Native">
+              React Native
+            </option>
+          </optgroup>
+          <optgroup label="Custom Hard Skills" id="customHardSkills">
+          </optgroup>
+        </select>
+        <label class="mt-3">
+          Add a custom hard skill:
+          <input id="customHardSkill1" name="customHardSkill1" type='text' />
+          <button class="mt-3" id="add-hard-skill" type="button">Add hard skill</button>
+        </label>
       </div>
     </section>
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -288,6 +291,7 @@
       newOption.textContent = inputAddHardSkill.value;
       inputAddHardSkill.value = '';
       optGroupHardSkills.appendChild(newOption)
+      newOption.selected = true;
       count++;
     })
 
@@ -302,6 +306,7 @@
       newOption.textContent = inputAddSoftSkill.value;
       inputAddSoftSkill.value = '';
       optGroupSoftSkills.appendChild(newOption)
+      newOption.selected = true;
       countAddedSoftSkills++;
     })
     

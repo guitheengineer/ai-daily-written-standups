@@ -8,9 +8,13 @@ input, textarea, select {
 }
 
 label {
-  @apply block text-gray-700 font-bold mb-2;
+  @apply block text-gray-700 font-medium mb-2;
 }
 
 h2 {
   @apply text-2xl font-bold mb-5;
+}
+
+button {
+  @apply bg-slate-300 font-medium text-gray-700 py-2 px-3 border border-slate-500;
 }
