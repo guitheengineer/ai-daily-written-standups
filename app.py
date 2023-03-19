@@ -8,16 +8,27 @@ def index():
     body = request.args.to_dict()
     person_profile = dict()
     person_profile["work_experience"] = []
+    person_profile["education"] = []
 
     for key in body:
         if "job" in key:
             jobIndex = int(key.split("-")[0].replace("job", ""))
             jobKey = key.split("-")[1]
-            person_profile["work_experience"].insert(jobIndex, {jobKey: body[key]})
-        else:
-            person_profile[key] = body[key]
+            try:
+                person_profile["work_experience"][jobIndex - 1][jobKey] = body[key]
+            except:
+                person_profile["work_experience"].insert(jobIndex, {jobKey: body[key]})
 
-    print(person_profile)
+        elif "education" in key:
+            jobIndex = int(key.split("-")[0].replace("education", ""))
+            jobKey = key.split("-")[1]
+            try:
+                person_profile["education"][jobIndex - 1][jobKey] = body[key]
+            except:
+                person_profile["education"].insert(jobIndex, {jobKey: body[key]})
+
+        else:
+            person_profile[key] = request.args.getlist(key)
 
     # about: '',
     # work_experience: [{
