@@ -104,62 +104,31 @@
         <div class="flex flex-col gap-5">
           <div>
             <label class="sr-only" for="softSkills">Soft Skills:</label>
-            <select id="softSkills" name="softSkills" multiple size="20" required>
+            <select id="softSkills" name="softSkills" multiple size="10" required>
               <optgroup label="Front-End">
-                <option value="HTML">
-                  HTML
+                <option value="Communication">
+                  Communication
                 </option>
-                <option value="CSS">
-                  CSS
+                <option value="Teamwork">
+                  Teamwork
                 </option>
-                <option value="JavaScript">
-                  JavaScript
+                <option value="Leadership">
+                  Leadership
                 </option>
-                <option value="React">
-                  React
+                <option value="Problem-solving">
+                  Problem-solving
                 </option>
-                <option value="Angular">
-                  Angular
+                <option value="Time management">
+                  Time management
                 </option>
-                <option value="Vue">
-                  Vue
+                <option value="Adaptability">
+                  Adaptability
                 </option>
-              </optgroup>
-              <optgroup label="Back-End">
-                <option value="Node.js">
-                  Node.js
+                <option value="Work ethic">
+                  Work ethic
                 </option>
-                <option value="Python">
-                  Python
-                </option>
-                <option value="Java">
-                  Java
-                </option>
-                <option value="C#">
-                  C#
-                </option>
-                <option value="Ruby">
-                  Ruby
-                </option>
-                <option value="PHP">
-                  PHP
-                </option>
-              </optgroup>
-              <optgroup label="Mobile Development">
-                <option value="Swift">
-                  Swift
-                </option>
-                <option value="Objective-C">
-                  Objective-C
-                </option>
-                <option value="Kotlin">
-                  Kotlin
-                </option>
-                <option value="Java (Android)">
-                  Java (Android)
-                </option>
-                <option value="React Native">
-                  React Native
+                <option value="Creativity">
+                  Creativity
                 </option>
               </optgroup>
               <optgroup label="Custom Soft Skills" id="customSoftSkills">
@@ -254,7 +223,7 @@
       <div>
         <p class="text-lg font-medium mb-1">Result:</p>
         <p>
-          {{ result }}.
+          {{ result }}
         </p>
       </div>
     {% endif %}
