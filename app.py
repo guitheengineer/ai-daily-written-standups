@@ -4,33 +4,40 @@ import nltk
 from nltk.corpus import stopwords
 from collections import Counter
 import requests
+from github import Github
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
+
+g = Github(login_or_token=os.getenv("GITHUB_API_KEY"))
 
 
 @app.route("/commits/<username>/<date>")
 def get_commits(username, date):
-    url = f"https://api.github.com/search/commits?q=author:{username}&sort=author-date&order=desc&page=1"
-    params = {"since": date, "until": date}
-    response = requests.get(
-        url,
-        params=params,
-        headers={"Authorization": f"Bearer {os.getenv('GITHUB_API_KEY')}"},
+    user = g.get_user(username)
+    repos = user.get_repos()
+
+    date_string = "29-03-2023"
+    date_format = "%d-%m-%Y"
+
+    date = datetime.strptime(date_string, date_format).date()
+
+    commit_list = []
+
+    print(
+        datetime.combine(date, datetime.min.time()),
+        datetime.combine(date + timedelta(days=1), datetime.min.time()),
     )
-    if response.ok:
-        commits = response.json()
-        print(commits)
-        # messages = [commit["commit"]["message"] for commit in commits]
-        # stop_words = set(stopwords.words("english"))
-        # words = [
-        #     word
-        #     for message in messages
-        #     for word in message.split()
-        #     if word.lower() not in stop_words
-        # ]
-        # word_counts = Counter(words)
-        # most_common = word_counts.most_common(10)
-        # summary = ", ".join([f"{word}: {count}" for word, count in most_common])
-        # return summary
-    else:
-        return "Error retrieving commits"
+    for repo in repos:
+        try:
+            commits = repo.get_commits(
+                author=username,
+                since=datetime.combine(date, datetime.min.time()),
+                until=datetime.combine(date + timedelta(days=1), datetime.min.time()),
+            )
+            for commit in commits:
+                commit_list.append(commit.commit.message)
+        except:
+            print("An error occured")
+
+    return commit_list
