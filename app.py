@@ -1,20 +1,22 @@
-from flask import Flask
+from flask import Flask, request
 import os
-from nltk.corpus import stopwords
 from github import Github
 from datetime import datetime, timedelta
 import os
 import openai
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 
 g = Github(login_or_token=os.getenv("GITHUB_API_KEY"))
 
 
-@app.route("/commits/<username>/<date>")
-def get_commits(username, date):
+@app.route("/")
+def get_commits():
+    username = request.args.get("username")
+    date = request.args.get("date")
+    api_key = request.args.get("api-key")
+    openai.api_key = api_key
     user = g.get_user(username)
     repos = user.get_repos()
 
