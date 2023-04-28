@@ -9,6 +9,7 @@
             <label for="username">Github username:</label>
             <input type="text"
                    id="username"
+                   value={{username}}
                    name="username"
                    required/>
           </div>
@@ -18,6 +19,7 @@
             <label for="date">Date:</label>
             <input type="date"
                    id="date"
+                   value={{date}}
                    name="date"
                    required/>
           </div>
@@ -27,6 +29,7 @@
             <label for="api-key">OpenAI Key:</label>
             <input type="text"
                    id="api-key"
+                   value={{api_key}}
                    name="api-key"
                    required/>
           </div>
@@ -37,5 +40,10 @@
             type="submit">
       Get daily written standups
     </button>
+    {% if text_result %}
+      <div>Your written standup result: <br /> {{text_result}}</div>
+    {% else %}
+      <p>There's no written standup for this date. Try changing to another one.</p>
+    {% endif %}
   </form>
 {% endblock content %}
