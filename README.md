@@ -26,7 +26,7 @@
 
 In the project directory, you can run:
 
-### `pip install -r ./requirements`
+### `pip install -r ./requirements.txt`
 
 It will install the necessary packages
 
